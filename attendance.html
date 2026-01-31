@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduAdmin | Attendance</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <i class="fas fa-graduation-cap fa-2x"></i>
+            <span class="logo">EduAdmin</span>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li class="nav-item"><a href="index.html" class="nav-link"><i
+                            class="fas fa-columns"></i><span>Dashboard</span></a></li>
+                <li class="nav-item"><a href="students.html" class="nav-link"><i
+                            class="fas fa-user-graduate"></i><span>Students</span></a></li>
+                <li class="nav-item"><a href="attendance.html" class="nav-link active"><i
+                            class="fas fa-calendar-check"></i><span>Attendance</span></a></li>
+                <li class="nav-item"><a href="fees.html" class="nav-link"><i
+                            class="fas fa-file-invoice-dollar"></i><span>Fee Management</span></a></li>
+                <li class="nav-item"><a href="reports.html" class="nav-link"><i
+                            class="fas fa-chart-line"></i><span>Reports</span></a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="search-box"><i class="fas fa-search"></i><input type="text" placeholder="Search..."></div>
+            <div class="user-profile">
+                <div class="user-info"><span class="user-name">Aliza Admin</span><span class="user-role">Super
+                        Administrator</span></div>
+                <div class="avatar">AA</div>
+            </div>
+        </header>
+
+        <h1>Mark Attendance</h1>
+        <p class="text-muted">Select class and section to mark today's attendance.</p>
+
+        <section class="section-card">
+            <div class="section-header">
+                <div style="display: flex; gap: 1rem;">
+                    <div>
+                        <label style="display: block; font-size: 0.8rem; font-weight: 600;">Class</label>
+                        <select class="btn btn-secondary">
+                            <option>8th</option>
+                            <option>9th</option>
+                            <option>10th</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="display: block; font-size: 0.8rem; font-weight: 600;">Section</label>
+                        <select class="btn btn-secondary">
+                            <option>A</option>
+                            <option>B</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="display: block; font-size: 0.8rem; font-weight: 600;">Date</label>
+                        <input type="date" class="btn btn-secondary" value="2026-01-30">
+                    </div>
+                </div>
+                <button class="btn btn-primary" onclick="alert('Student list loaded for Class 8-A')"><i
+                        class="fas fa-search"></i> Load List</button>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Roll No.</th>
+                        <th>Student Name</th>
+                        <th>Status</th>
+                        <th>Remarks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>001</td>
+                        <td>Aryan Khan</td>
+                        <td>
+                            <div style="display: flex; gap: 10px;">
+                                <label><input type="radio" name="att_001" checked> P</label>
+                                <label><input type="radio" name="att_001"> A</label>
+                                <label><input type="radio" name="att_001"> L</label>
+                            </div>
+                        </td>
+                        <td><input type="text" class="btn btn-secondary"
+                                style="width: 100%; text-align: left; padding: 4px;"></td>
+                    </tr>
+                    <tr>
+                        <td>002</td>
+                        <td>Sarah Johnson</td>
+                        <td>
+                            <div style="display: flex; gap: 10px;">
+                                <label><input type="radio" name="att_002" checked> P</label>
+                                <label><input type="radio" name="att_002"> A</label>
+                                <label><input type="radio" name="att_002"> L</label>
+                            </div>
+                        </td>
+                        <td><input type="text" class="btn btn-secondary"
+                                style="width: 100%; text-align: left; padding: 4px;"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="margin-top: 1.5rem; display: flex; justify-content: flex-end;">
+                <button class="btn btn-primary" onclick="alert('Attendance saved successfully for Jan 30, 2026')">Save
+                    Attendance</button>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>

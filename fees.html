@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduAdmin | Fees</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <i class="fas fa-graduation-cap fa-2x"></i>
+            <span class="logo">EduAdmin</span>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li class="nav-item"><a href="index.html" class="nav-link"><i
+                            class="fas fa-columns"></i><span>Dashboard</span></a></li>
+                <li class="nav-item"><a href="students.html" class="nav-link"><i
+                            class="fas fa-user-graduate"></i><span>Students</span></a></li>
+                <li class="nav-item"><a href="attendance.html" class="nav-link"><i
+                            class="fas fa-calendar-check"></i><span>Attendance</span></a></li>
+                <li class="nav-item"><a href="fees.html" class="nav-link active"><i
+                            class="fas fa-file-invoice-dollar"></i><span>Fee Management</span></a></li>
+                <li class="nav-item"><a href="reports.html" class="nav-link"><i
+                            class="fas fa-chart-line"></i><span>Reports</span></a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="search-box"><i class="fas fa-search"></i><input type="text"
+                    placeholder="Search by Invoice or Student ID..."></div>
+            <div class="user-profile">
+                <div class="user-info"><span class="user-name">Aliza Admin</span><span class="user-role">Super
+                        Administrator</span></div>
+                <div class="avatar">AA</div>
+            </div>
+        </header>
+
+        <h1>Fee Management</h1>
+        <p class="text-muted">Track payments, manage structures, and send reminders.</p>
+
+        <section class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-title">Collection This Month</span>
+                <span class="stat-value">$12,450</span>
+                <span class="stat-trend trend-up">85% Processed</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-title">Pending Collection</span>
+                <span class="stat-value">$2,100</span>
+                <span class="stat-trend trend-down">15% Pending</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-title">Overdue Invoices</span>
+                <span class="stat-value">12</span>
+                <span class="stat-trend trend-down">Immediate action required</span>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <div class="section-header">
+                <h2>Fee Status</h2>
+                <button class="btn btn-secondary" onclick="alert('Sent reminders to 12 parents!')"><i
+                        class="fas fa-paper-plane"></i> Send All Reminders</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Invoice #</th>
+                        <th>Student Name</th>
+                        <th>Class</th>
+                        <th>Amount</th>
+                        <th>Due Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#INV-1024</td>
+                        <td>Aryan Khan</td>
+                        <td>8th-B</td>
+                        <td>$450.00</td>
+                        <td>10 Jan 2026</td>
+                        <td><span class="badge badge-paid">Paid</span></td>
+                        <td><button class="btn btn-secondary"><i class="fas fa-print"></i></button></td>
+                    </tr>
+                    <tr>
+                        <td>#INV-1025</td>
+                        <td>Sarah Johnson</td>
+                        <td>10th-A</td>
+                        <td>$450.00</td>
+                        <td>15 Jan 2026</td>
+                        <td><span class="badge badge-pending">Pending</span></td>
+                        <td><button class="btn btn-primary" style="padding: 4px 8px;">Pay Now</button></td>
+                    </tr>
+                    <tr>
+                        <td>#INV-1026</td>
+                        <td>Zaid Ahmed</td>
+                        <td>9th-C</td>
+                        <td>$450.00</td>
+                        <td>05 Jan 2026</td>
+                        <td><span class="badge badge-overdue">Overdue</span></td>
+                        <td><button class="btn btn-secondary" style="color: var(--danger-color);"><i
+                                    class="fas fa-bell"></i></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>

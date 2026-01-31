@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduAdmin | Reports</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <i class="fas fa-graduation-cap fa-2x"></i>
+            <span class="logo">EduAdmin</span>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li class="nav-item"><a href="index.html" class="nav-link"><i
+                            class="fas fa-columns"></i><span>Dashboard</span></a></li>
+                <li class="nav-item"><a href="students.html" class="nav-link"><i
+                            class="fas fa-user-graduate"></i><span>Students</span></a></li>
+                <li class="nav-item"><a href="attendance.html" class="nav-link"><i
+                            class="fas fa-calendar-check"></i><span>Attendance</span></a></li>
+                <li class="nav-item"><a href="fees.html" class="nav-link"><i
+                            class="fas fa-file-invoice-dollar"></i><span>Fee Management</span></a></li>
+                <li class="nav-item"><a href="reports.html" class="nav-link active"><i
+                            class="fas fa-chart-line"></i><span>Reports</span></a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="search-box"><i class="fas fa-search"></i><input type="text" placeholder="Search reports...">
+            </div>
+            <div class="user-profile">
+                <div class="user-info"><span class="user-name">Aliza Admin</span><span class="user-role">Super
+                        Administrator</span></div>
+                <div class="avatar">AA</div>
+            </div>
+        </header>
+
+        <h1>Reports & Analytics</h1>
+        <p class="text-muted">In-depth analysis of finances and academic performance.</p>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem;">
+            <section class="section-card">
+                <div class="section-header">
+                    <h2>Academic Performance</h2>
+                    <select class="btn btn-secondary">
+                        <option>Term 1</option>
+                        <option>Term 2</option>
+                    </select>
+                </div>
+                <canvas id="performanceChart" height="250"></canvas>
+            </section>
+
+            <section class="section-card">
+                <div class="section-header">
+                    <h2>Finance Breakdown</h2>
+                </div>
+                <canvas id="financePieChart" height="250"></canvas>
+            </section>
+        </div>
+
+        <section class="section-card" style="margin-top: 2rem;">
+            <div class="section-header">
+                <h2>Class-wise Monthly Collection</h2>
+                <button class="btn btn-secondary" onclick="alert('Preparing report for download...')"><i
+                        class="fas fa-download"></i> Export PDF</button>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Class</th>
+                        <th>Students</th>
+                        <th>Collected</th>
+                        <th>Pending</th>
+                        <th>Collection %</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Class 8</td>
+                        <td>120</td>
+                        <td>$5,400</td>
+                        <td>$600</td>
+                        <td>
+                            <div style="width: 100px; height: 8px; background: #eee; border-radius: 4px;">
+                                <div
+                                    style="width: 90%; height: 100%; background: var(--accent-color); border-radius: 4px;">
+                                </div>
+                            </div> 90%
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Class 9</td>
+                        <td>115</td>
+                        <td>$4,800</td>
+                        <td>$1,200</td>
+                        <td>
+                            <div style="width: 100px; height: 8px; background: #eee; border-radius: 4px;">
+                                <div
+                                    style="width: 80%; height: 100%; background: var(--warning-color); border-radius: 4px;">
+                                </div>
+                            </div> 80%
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Class 10</td>
+                        <td>110</td>
+                        <td>$5,500</td>
+                        <td>$0</td>
+                        <td>
+                            <div style="width: 100px; height: 8px; background: #eee; border-radius: 4px;">
+                                <div
+                                    style="width: 100%; height: 100%; background: var(--accent-color); border-radius: 4px;">
+                                </div>
+                            </div> 100%
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const perfCtx = document.getElementById('performanceChart');
+            if (perfCtx) {
+                new Chart(perfCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Class 6', 'Class 7', 'Class 8', 'Class 9', 'Class 10'],
+                        datasets: [{
+                            label: 'Average Score (%)',
+                            data: [78, 82, 75, 88, 84],
+                            backgroundColor: '#6366f1'
+                        }]
+                    },
+                    options: { responsive: true, scales: { y: { beginAtZero: true, max: 100 } } }
+                });
+            }
+
+            const financeCtx = document.getElementById('financePieChart');
+            if (financeCtx) {
+                new Chart(financeCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Tuition', 'Transport', 'Library', 'Exams'],
+                        datasets: [{
+                            data: [65, 15, 10, 10],
+                            backgroundColor: ['#6366f1', '#eef2ff', '#10b981', '#f59e0b']
+                        }]
+                    },
+                    options: { responsive: true }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

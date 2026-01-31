@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduAdmin | Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <i class="fas fa-graduation-cap fa-2x"></i>
+            <span class="logo">EduAdmin</span>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link active">
+                        <i class="fas fa-columns"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="students.html" class="nav-link">
+                        <i class="fas fa-user-graduate"></i>
+                        <span>Students</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="attendance.html" class="nav-link">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Attendance</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="fees.html" class="nav-link">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                        <span>Fee Management</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="reports.html" class="nav-link">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Reports</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="#" class="nav-link">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search students, fees, etc...">
+            </div>
+            <div class="user-profile">
+                <div class="user-info">
+                    <span class="user-name">Aliza Admin</span>
+                    <span class="user-role">Super Administrator</span>
+                </div>
+                <div class="avatar">AA</div>
+            </div>
+        </header>
+
+        <h1>Overview Dashboard</h1>
+        <p class="text-muted">Welcome back, here's what's happening today.</p>
+
+        <section class="stats-grid">
+            <div class="stat-card">
+                <span class="stat-title">Total Students</span>
+                <span class="stat-value">1,248</span>
+                <span class="stat-trend trend-up"><i class="fas fa-arrow-up"></i> 12 new this month</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-title">Monthly Revenue</span>
+                <span class="stat-value">$42,500</span>
+                <span class="stat-trend trend-up"><i class="fas fa-arrow-up"></i> 8% vs last month</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-title">Avg. Attendance</span>
+                <span class="stat-value">94.2%</span>
+                <span class="stat-trend trend-down"><i class="fas fa-arrow-down"></i> 1.5% from last week</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-title">Pending Fees</span>
+                <span class="stat-value">$3,200</span>
+                <span class="stat-trend"><i class="fas fa-clock"></i> 14 students overdue</span>
+            </div>
+        </section>
+
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem;">
+            <section class="section-card">
+                <div class="section-header">
+                    <h2>Fee Collection Trend</h2>
+                    <select class="btn btn-secondary">
+                        <option>Last 6 Months</option>
+                        <option>Last 12 Months</option>
+                    </select>
+                </div>
+                <canvas id="revenueChart" height="200"></canvas>
+            </section>
+
+            <section class="section-card">
+                <div class="section-header">
+                    <h2>Recent Activities</h2>
+                </div>
+                <ul style="list-style: none;">
+                    <li style="margin-bottom: 1rem; display: flex; gap: 10px;">
+                        <i class="fas fa-plus-circle" style="color: var(--accent-color);"></i>
+                        <div>
+                            <p style="font-weight: 600; font-size: 0.9rem;">New Admission</p>
+                            <p style="font-size: 0.8rem; color: var(--text-muted);">Aryan Khan joined Class 8-B</p>
+                        </div>
+                    </li>
+                    <li style="margin-bottom: 1rem; display: flex; gap: 10px;">
+                        <i class="fas fa-credit-card" style="color: var(--primary-color);"></i>
+                        <div>
+                            <p style="font-weight: 600; font-size: 0.9rem;">Fee Payment</p>
+                            <p style="font-size: 0.8rem; color: var(--text-muted);">$450 received from Sarah J.</p>
+                        </div>
+                    </li>
+                    <li style="margin-bottom: 1rem; display: flex; gap: 10px;">
+                        <i class="fas fa-exclamation-triangle" style="color: var(--warning-color);"></i>
+                        <div>
+                            <p style="font-weight: 600; font-size: 0.9rem;">Attendance Alert</p>
+                            <p style="font-size: 0.8rem; color: var(--text-muted);">5 students absent in Class 10-A</p>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

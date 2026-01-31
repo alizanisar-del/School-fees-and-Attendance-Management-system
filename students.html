@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduAdmin | Students</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <i class="fas fa-graduation-cap fa-2x"></i>
+            <span class="logo">EduAdmin</span>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-columns"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="students.html" class="nav-link active">
+                        <i class="fas fa-user-graduate"></i>
+                        <span>Students</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="attendance.html" class="nav-link">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Attendance</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="fees.html" class="nav-link">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                        <span>Fee Management</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="reports.html" class="nav-link">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Reports</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="#" class="nav-link">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="globalSearch" placeholder="Search students by name or ID...">
+            </div>
+            <div class="user-profile">
+                <div class="user-info">
+                    <span class="user-name">Aliza Admin</span>
+                    <span class="user-role">Super Administrator</span>
+                </div>
+                <div class="avatar">AA</div>
+            </div>
+        </header>
+
+        <div class="section-header">
+            <div>
+                <h1>Student Management</h1>
+                <p class="text-muted">Manage admissions and student records.</p>
+            </div>
+            <button class="btn btn-primary" onclick="document.getElementById('admissionModal').style.display='flex'">
+                <i class="fas fa-plus"></i> New Admission
+            </button>
+        </div>
+
+        <section class="section-card">
+            <div class="section-header">
+                <h2>Student Directory</h2>
+                <div style="display: flex; gap: 10px;">
+                    <select id="classFilter" class="btn btn-secondary">
+                        <option value="all">All Classes</option>
+                        <option value="8th">Class 8</option>
+                        <option value="9th">Class 9</option>
+                        <option value="10th">Class 10</option>
+                    </select>
+                    <button id="filterBtn" class="btn btn-secondary"><i class="fas fa-filter"></i> Filter</button>
+                </div>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Class</th>
+                        <th>Section</th>
+                        <th>Parent Name</th>
+                        <th>Contact</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="studentTableBody">
+                    <!-- Sample Data -->
+                    <tr>
+                        <td>#ST001</td>
+                        <td>Aryan Khan</td>
+                        <td>8th</td>
+                        <td>B</td>
+                        <td>Zahid Khan</td>
+                        <td>+92 300 1234567</td>
+                        <td><span class="badge badge-paid">Active</span></td>
+                        <td>
+                            <button class="btn btn-secondary" onclick="editStudent('#ST001')"
+                                style="padding: 4px 8px;"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-secondary" onclick="deleteStudent('#ST001')"
+                                style="padding: 4px 8px; color: var(--danger-color);"><i
+                                    class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>#ST002</td>
+                        <td>Sarah Johnson</td>
+                        <td>10th</td>
+                        <td>A</td>
+                        <td>Mark Johnson</td>
+                        <td>+1 234 5678</td>
+                        <td><span class="badge badge-paid">Active</span></td>
+                        <td>
+                            <button class="btn btn-secondary" onclick="editStudent('#ST002')"
+                                style="padding: 4px 8px;"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-secondary" onclick="deleteStudent('#ST002')"
+                                style="padding: 4px 8px; color: var(--danger-color);"><i
+                                    class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Admission Modal -->
+        <div id="admissionModal" class="modal">
+            <div class="modal-content" style="width: 600px;">
+                <h2>New Student Admission</h2>
+                <hr style="margin: 1rem 0; border: none; border-top: 1px solid var(--border-color);">
+                <form id="admissionForm">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: 5px; font-weight: 600;">First Name</label>
+                            <input type="text" class="btn btn-secondary" style="width: 100%; text-align: left;"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: 5px; font-weight: 600;">Last Name</label>
+                            <input type="text" class="btn btn-secondary" style="width: 100%; text-align: left;"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: 5px; font-weight: 600;">Class</label>
+                            <select class="btn btn-secondary" style="width: 100%; text-align: left;">
+                                <option>8th</option>
+                                <option>9th</option>
+                                <option>10th</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: 5px; font-weight: 600;">Section</label>
+                            <select class="btn btn-secondary" style="width: 100%; text-align: left;">
+                                <option>A</option>
+                                <option>B</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: 5px; font-weight: 600;">Parent/Guardian</label>
+                            <input type="text" class="btn btn-secondary" style="width: 100%; text-align: left;"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label style="display: block; margin-bottom: 5px; font-weight: 600;">Mobile No.</label>
+                            <input type="tel" class="btn btn-secondary" style="width: 100%; text-align: left;" required>
+                        </div>
+                    </div>
+                    <div style="margin-top: 2rem; display: flex; justify-content: flex-end; gap: 10px;">
+                        <button type="button" class="btn btn-secondary"
+                            onclick="document.getElementById('admissionModal').style.display='none'">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Submit Admission</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
